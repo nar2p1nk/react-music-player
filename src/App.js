@@ -1,23 +1,31 @@
-import logo from './logo.svg';
 import './App.css';
+import {
+  BsArrowBarRight,
+  BsArrowBarLeft,
+  BsFillPauseFill,
+  BsFillPlayBtnFill} from 'react-icons/bs';
+import {useState} from 'react';
 
 function App() {
+  const [status,setStatus] = useState(true);
+
+  const changeStatus=()=>{
+    setStatus(!status)
+  };
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>welcome to react</h1>
+      <div>
+        <h1>
+          <BsArrowBarLeft/>
+          {
+            status === true
+          ? <BsFillPlayBtnFill onClick={changeStatus}/>
+          : <BsFillPauseFill onClick={changeStatus}/>
+          }
+          <BsArrowBarRight/>
+        </h1>
+      </div>
     </div>
   );
 }
